@@ -12,6 +12,7 @@ files_list.sort(key=lambda x: x[0])
 cook_book = {}
 
 
+
 def process_files():
     for file_info in files_list:
         file_length, file_path = file_info
@@ -53,9 +54,28 @@ def get_ingredients_for_people(dishes, people):
     return ingredients
 
 
+def write_dict_to_file():
+    file_name = input("Enter a file name: ") + ".txt"
+    o = ""
+    for dish, ingredients in cook_book.items():
+        o += f"{dish}:\n"
+        for ingredient in ingredients:
+            ingredient_name = ingredient['ingredient_name']
+            measure = ingredient['measure']
+            quantity = ingredient['quantity']
+            o += f"{ingredient_name: <30} {measure: <10} {quantity: <20}\n"
+        o += "\n"
+    print(o)
+    with open(file_name, "w") as file:
+        file.write(o)
+
+
+
 dishes = ['Яйца фаршерованные', 'Фахитос', 'салат ёжик']
 people = 40
 ingredients = get_ingredients_for_people(dishes, people)
 
-print(json.dumps(ingredients, indent=6, sort_keys=True, ensure_ascii=False))
-print(json.dumps(cook_book, indent=2, sort_keys=True, ensure_ascii=False))
+write_dict_to_file()
+
+# print(json.dumps(ingredients, indent=6, sort_keys=True, ensure_ascii=False))
+# print(json.dumps(cook_book, indent=2, sort_keys=True, ensure_ascii=False))
