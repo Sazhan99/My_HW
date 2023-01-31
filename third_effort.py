@@ -77,5 +77,3 @@ ingredients = get_ingredients_for_people(dishes, people)
 
 write_dict_to_file()
 
-# print(json.dumps(ingredients, indent=6, sort_keys=True, ensure_ascii=False))
-# print(json.dumps(cook_book, indent=2, sort_keys=True, ensure_ascii=False))
